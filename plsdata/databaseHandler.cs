@@ -34,7 +34,7 @@ namespace plsdata
                 string query = $"SELECT * FROM {tablename}";
                 MySqlCommand command = new MySqlCommand(query,connection);
                 MySqlDataReader read = command.ExecuteReader();
-
+                food.prodlist.Clear();
                 while (read.Read())
                 {
                     food oneFood = new food();
@@ -46,7 +46,7 @@ namespace plsdata
                 read.Close();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("beolvasás");
+                //MessageBox.Show("beolvasás");
             }
             catch (Exception e)
             {
@@ -66,7 +66,7 @@ namespace plsdata
 
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("törlés");
+                //MessageBox.Show("törlés");
             }
             catch (Exception e)
             {
@@ -84,7 +84,7 @@ namespace plsdata
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("Minden");
+                //MessageBox.Show("Minden");
             }
             catch (Exception e)
             {
@@ -97,12 +97,12 @@ namespace plsdata
             try
             {
                 connection.Open();
-                string query = $"INSERT INTO {tablename}('nev', 'mennyiseg') VALUES('{oneFood.name}',{oneFood.quantity})";
+                string query = $"INSERT INTO {tablename}(nev, mennyiseg) VALUES('{oneFood.name}',{oneFood.quantity})";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("Hozzáadva");
+                //MessageBox.Show("Hozzáadva");
             }
             catch (Exception e)
             {
